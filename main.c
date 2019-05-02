@@ -1,6 +1,7 @@
 #include <xc.h>
 #include "LCD.h"
 #include "TCS34725.h"
+#include "platform.h"
 
 #pragma config FOSC=HSPLL
 #pragma config WDTEN=OFF
@@ -17,7 +18,7 @@ void main(void) {
     LCDInit();
     lprintf(0, "TCS34725 Demo");
     InitTCS34725();
-    char id = I2CReadRegister(TCS_ID);
+    char id = i2cReadRegister(TCS_ID);
     lprintf(1, "Chip ID = %d", id);
     __delay_ms(1000);
     ConfigInterrupts();
