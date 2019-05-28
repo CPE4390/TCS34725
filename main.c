@@ -19,10 +19,10 @@ void main(void) {
     lprintf(0, "TCS34725 Demo");
     InitTCS34725();
     char id = i2cReadRegister(TCS_ID);
-    lprintf(1, "Chip ID = %d", id);
+    lprintf(1, "Chip ID = %02x", id);
     __delay_ms(1000);
     ConfigInterrupts();
-    StartTCS34725(1, 100, 0, TCS_GAIN_1X);
+    StartTCS34725(1, 100, 0, TCS_GAIN_60X);
     while (1) {
         ReadColorData(&colorData);
         lprintf(0, "C=%u R=%u", colorData.clearData, colorData.redData);
